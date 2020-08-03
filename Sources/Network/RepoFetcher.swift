@@ -16,6 +16,12 @@ public class RepoFetcher {
         
         let task = session.dataTask(with: req) { ºdata, ºresponse, ºerror in
             defer { callBack(self.ºrepos) }
+            guard let response = ºresponse as? HTTPURLResponse else {
+                return
+            }
+            guard (200...299).contains(response.statusCode) else {
+                return
+            }
             guard let data = ºdata else {
                 return
             }
