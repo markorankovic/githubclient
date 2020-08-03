@@ -25,29 +25,33 @@ public class RepoFetcher {
         req.addValue("token \(GitHub.token)", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: req) { ºdata, ºresponse, ºerror in
-            defer { callBack(self.status) }
-            guard let response = ºresponse as? HTTPURLResponse else {
-                self.status = .error("No response")
-                return
-            }
-            guard (200...299).contains(response.statusCode) else {
-                self.status = .error("\(response.statusCode)")
-                return
-            }
-            guard let data = ºdata else {
-                self.status = .error("No data")
-                return
-            }
-            do {
-                self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
-                self.status = .ok("\(self.ºrepos!)")
-            }
-            catch {
-                print("\(error)")
-            }
+            self.handler(callBack, ºdata, ºresponse, ºerror)
         }
         
         task.resume()
+    }
+    
+    func handler(_ callBack: @escaping (_ status: Status) -> (), _ ºdata: Data?, _ ºresponse: URLResponse?, _ ºerror: Error?) {
+        defer { callBack(self.status) }
+        guard let response = ºresponse as? HTTPURLResponse else {
+            self.status = .error("No response")
+            return
+        }
+        guard (200...299).contains(response.statusCode) else {
+            self.status = .error("\(response.statusCode)")
+            return
+        }
+        guard let data = ºdata else {
+            self.status = .error("No data")
+            return
+        }
+        do {
+            self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
+            self.status = .ok("\(self.ºrepos!)")
+        }
+        catch {
+            print("\(error)")
+        }
     }
 
 }
