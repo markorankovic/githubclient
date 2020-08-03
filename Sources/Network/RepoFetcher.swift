@@ -2,10 +2,20 @@ import Foundation
 
 public class RepoFetcher {
     
-    var ºrepos: [GitHub.Repo]?
+    public enum Status {
+        case inactive
+        case active
+        case error(String)
+        case ok(String)
+    }
     
-    public func fetch(callBack: @escaping (_ repos: [GitHub.Repo]?) -> ()) {
+    public var ºrepos: [GitHub.Repo]?
+    public var status: Status = .inactive
+    
+    public func fetch(callBack: @escaping (_ status: Status) -> ()) {
+        status = .active
         guard let url = URL(string: "https://api.github.com/user/repos") else {
+            status = .error("Invalid URL")
             return
         }
                 
@@ -15,18 +25,22 @@ public class RepoFetcher {
         req.addValue("token \(GitHub.token)", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: req) { ºdata, ºresponse, ºerror in
-            defer { callBack(self.ºrepos) }
+            defer { callBack(self.status) }
             guard let response = ºresponse as? HTTPURLResponse else {
+                self.status = .error("No response")
                 return
             }
             guard (200...299).contains(response.statusCode) else {
+                self.status = .error("\(response.statusCode)")
                 return
             }
             guard let data = ºdata else {
+                self.status = .error("No data")
                 return
             }
             do {
                 self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
+                self.status = .ok("\(self.ºrepos!)")
             }
             catch {
                 print("\(error)")

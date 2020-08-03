@@ -28,12 +28,12 @@ final class NetworkTests: XCTestCase {
         group.enter() // Waiting begins
         
         repoFetcher.fetch {
-            ºrepos in
+            status in
             defer { group.leave() } // Waiting ends
-            guard let repos = ºrepos else {
-                return XCTFail("Error accquiring repos")
+            guard String(describing: status).contains("ok") else {
+                return XCTFail("\(status)")
             }
-            print("✅", repos)
+            print(status)
         }
         
         group.wait() // Wait to see if fetching repos was successful
