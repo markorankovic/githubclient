@@ -12,8 +12,15 @@ public class RepoFetcher {
     public var ºrepos: [GitHub.Repo]?
     public var status: Status = .inactive
     
+    public var fakeOk: Data?
+    
     public func fetch(callBack: @escaping (_ status: Status) -> ()) {
         status = .active
+        
+        if let fakeOk = fakeOk {
+            return handler(callBack, fakeOk, nil, nil)
+        }
+        
         guard let url = URL(string: "https://api.github.com/user/repos") else {
             status = .error("Invalid URL")
             return
@@ -33,23 +40,17 @@ public class RepoFetcher {
     
     func handler(_ callBack: @escaping (_ status: Status) -> (), _ ºdata: Data?, _ ºresponse: URLResponse?, _ ºerror: Error?) {
         defer { callBack(self.status) }
-        guard let response = ºresponse as? HTTPURLResponse else {
-            self.status = .error("No response")
-            return
-        }
-        guard (200...299).contains(response.statusCode) else {
-            self.status = .error("\(response.statusCode)")
-            return
-        }
         guard let data = ºdata else {
             self.status = .error("No data")
             return
         }
         do {
+            Pasteboard.copy((String(data: data, encoding: .utf8)!))
             self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
             self.status = .ok("\(self.ºrepos!)")
         }
         catch {
+            self.status = .error("\(error)")
             print("\(error)")
         }
     }

@@ -1,5 +1,4 @@
 import XCTest
-import Foundation
 @testable import Network
 
 extension Bundle {
@@ -20,36 +19,32 @@ extension GitHub.Repo {
 final class NetworkTests: XCTestCase {
     
     func test_repoFetcher() {
-        
         let repoFetcher = RepoFetcher()
         
-        let group = DispatchGroup()
-        
-        group.enter() // Waiting begins
-        
+        let exp = expectation(description: "Repos to be fetched")
+                
         repoFetcher.fetch {
             status in
-            defer { group.leave() } // Waiting ends
             guard String(describing: status).contains("ok") else {
                 return XCTFail("\(status)")
             }
-            print(status)
+            exp.fulfill()
         }
         
-        group.wait() // Wait to see if fetching repos was successful
+        wait(for: [exp], timeout: 5)
+    }
+    
+    func test_repoFetcher_fakeOk() {
+        let repoFetcher = RepoFetcher()
+                                
+        repoFetcher.fakeOk = fake_ok
         
+        repoFetcher.fetch {
+            status in
+            guard String(describing: status).contains("ok") else {
+                return XCTFail("\(status)")
+            }
+        }
     }
     
 }
-
-#if os(macOS)
-public typealias Pasteboard = NSPasteboard
-
-extension Pasteboard {
-    
-    public static func copy(_ string: String) {
-        Pasteboard.general.clearContents()
-        Pasteboard.general.setData(string.data(using: .utf8), forType: .string)
-    }
-}
-#endif
