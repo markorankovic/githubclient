@@ -2,7 +2,9 @@ import Foundation
 
 public class RepoFetcher {
     
-    public static func fetch(callBack: @escaping (_ repos: [GitHub.Repo]?) -> ()) {
+    var ºrepos: [GitHub.Repo]?
+    
+    public func fetch(callBack: @escaping (_ repos: [GitHub.Repo]?) -> ()) {
         guard let url = URL(string: "https://api.github.com/user/repos") else {
             return
         }
@@ -13,13 +15,12 @@ public class RepoFetcher {
         req.addValue("token \(GitHub.token)", forHTTPHeaderField: "Authorization")
         
         let task = session.dataTask(with: req) { ºdata, ºresponse, ºerror in
-            var ºrepos: [GitHub.Repo]?
-            defer { callBack(ºrepos) }
+            defer { callBack(self.ºrepos) }
             guard let data = ºdata else {
                 return
             }
             do {
-                ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
+                self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
             }
             catch {
                 print("\(error)")

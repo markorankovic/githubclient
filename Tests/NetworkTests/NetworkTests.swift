@@ -21,14 +21,15 @@ final class NetworkTests: XCTestCase {
     
     func test_repoFetcher() {
         
+        let repoFetcher = RepoFetcher()
+        
         let group = DispatchGroup()
         
         group.enter()
-        RepoFetcher.fetch {
+        repoFetcher.fetch {
             ºrepos in
             guard let repos = ºrepos else {
-                print("Error fetching repos")
-                return
+                return XCTFail("Error fetching repos")
             }
             print("✅", repos)
             group.leave()
