@@ -14,6 +14,8 @@ public class RepoFetcher {
     
     public var fakeOk: Data?
     
+    public init() { }
+    
     public func fetch(callBack: @escaping (_ status: Status) -> ()) {
         status = .active
         
@@ -45,7 +47,6 @@ public class RepoFetcher {
             return
         }
         do {
-            Pasteboard.copy((String(data: data, encoding: .utf8)!))
             self.ºrepos = try JSONDecoder().decode([GitHub.Repo].self, from: data)
             self.status = .ok("\(self.ºrepos!)")
         }

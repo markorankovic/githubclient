@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD026A2724D85B3E00003AD4 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AD026A2624D85B3E00003AD4 /* Network */; };
 		AD96053B24D83291009A4183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053A24D83291009A4183 /* AppDelegate.swift */; };
 		AD96053D24D83291009A4183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053C24D83291009A4183 /* SceneDelegate.swift */; };
 		AD96053F24D83291009A4183 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053E24D83291009A4183 /* ContentView.swift */; };
@@ -31,17 +32,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD026A2724D85B3E00003AD4 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD026A2524D85B3E00003AD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AD96052E24D83291009A4183 = {
 			isa = PBXGroup;
 			children = (
 				AD96053924D83291009A4183 /* TestApp */,
 				AD96053824D83291009A4183 /* Products */,
+				AD026A2524D85B3E00003AD4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +101,9 @@
 			dependencies = (
 			);
 			name = TestApp;
+			packageProductDependencies = (
+				AD026A2624D85B3E00003AD4 /* Network */,
+			);
 			productName = TestApp;
 			productReference = AD96053724D83291009A4183 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +132,8 @@
 				Base,
 			);
 			mainGroup = AD96052E24D83291009A4183;
+			packageReferences = (
+			);
 			productRefGroup = AD96053824D83291009A4183 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -342,6 +357,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD026A2624D85B3E00003AD4 /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD96052F24D83291009A4183 /* Project object */;
 }
