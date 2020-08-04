@@ -8,7 +8,9 @@ public class RepoFetcher {
         case error(String)
         case ok(String)
     }
-    
+            
+    static let session = URLSession(configuration: .default)
+
     public var ºrepos: [GitHub.Repo]?
     public var status: Status = .inactive
     
@@ -27,13 +29,11 @@ public class RepoFetcher {
             status = .error("Invalid URL")
             return
         }
-                
-        let session = URLSession(configuration: .default)
         
         var req = URLRequest(url: url)
         req.addValue("token \(GitHub.token)", forHTTPHeaderField: "Authorization")
         
-        let task = session.dataTask(with: req) { ºdata, ºresponse, ºerror in
+        let task = RepoFetcher.session.dataTask(with: req) { ºdata, ºresponse, ºerror in
             self.handler(callBack, ºdata, ºresponse, ºerror)
         }
         

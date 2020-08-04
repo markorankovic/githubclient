@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AD026A2724D85B3E00003AD4 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AD026A2624D85B3E00003AD4 /* Network */; };
+		AD13A31224D9B591008D6AAB /* RepoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13A31124D9B591008D6AAB /* RepoStore.swift */; };
+		AD13A31424D9D04E008D6AAB /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13A31324D9D04E008D6AAB /* RepoView.swift */; };
 		AD96053B24D83291009A4183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053A24D83291009A4183 /* AppDelegate.swift */; };
 		AD96053D24D83291009A4183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053C24D83291009A4183 /* SceneDelegate.swift */; };
 		AD96053F24D83291009A4183 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053E24D83291009A4183 /* ContentView.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD13A31124D9B591008D6AAB /* RepoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStore.swift; sourceTree = "<group>"; };
+		AD13A31324D9D04E008D6AAB /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
 		AD96053724D83291009A4183 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD96053A24D83291009A4183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD96053C24D83291009A4183 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				AD96054524D83295009A4183 /* LaunchScreen.storyboard */,
 				AD96054824D83295009A4183 /* Info.plist */,
 				AD96054224D83295009A4183 /* Preview Content */,
+				AD13A31124D9B591008D6AAB /* RepoStore.swift */,
+				AD13A31324D9D04E008D6AAB /* RepoView.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -162,8 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD96053B24D83291009A4183 /* AppDelegate.swift in Sources */,
+				AD13A31224D9B591008D6AAB /* RepoStore.swift in Sources */,
 				AD96053D24D83291009A4183 /* SceneDelegate.swift in Sources */,
 				AD96053F24D83291009A4183 /* ContentView.swift in Sources */,
+				AD13A31424D9D04E008D6AAB /* RepoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

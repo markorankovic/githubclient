@@ -10,12 +10,9 @@ import SwiftUI
 import Network
 
 struct ContentView: View {
-    
-    var repositories: [GitHub.Repo] = []
-    
     var body: some View {
-        let fetcher = RepoFetcher()
-        Text("GitHub Repositories")
+        print(1)
+        return RepoView(repoStore: RepoStore())
     }
 }
 
