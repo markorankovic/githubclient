@@ -4,7 +4,7 @@ import SwiftUI
 
 class RepoStore: ObservableObject {
     
-    @Published var repos: [GitHub.Repo] = []
+    var repos: [GitHub.Repo] = []
     
     private let f = RepoFetcher()
             

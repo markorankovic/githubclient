@@ -10,14 +10,18 @@ import SwiftUI
 import Network
 
 struct ContentView: View {
+    var repos: [GitHub.Repo] = []
     var body: some View {
-        print(1)
-        return RepoView(repoStore: RepoStore())
+        NavigationView {
+            List(repos) { repo in
+                RepoView(repo: repo)
+            }
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(repos: testData)
     }
 }

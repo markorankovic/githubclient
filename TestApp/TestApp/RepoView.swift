@@ -1,12 +1,20 @@
 import Foundation
 import SwiftUI
+import Network
 
 struct RepoView: View {
+        
+    let repo: GitHub.Repo
     
-    @ObservedObject var repoStore: RepoStore
+    init(repo: GitHub.Repo) {
+        self.repo = repo
+    }
     
-    var body: Text {
-        return Text("\(repoStore.repos.count)")
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(repo.name)
+            Text(repo.description ?? "")
+        }
     }
     
 }

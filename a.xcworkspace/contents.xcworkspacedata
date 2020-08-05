@@ -5,9 +5,6 @@
       location = "group:TestApp/TestApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:GitHubClient/GitHubClient.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:">
    </FileRef>
 </Workspace>
