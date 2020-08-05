@@ -16,6 +16,10 @@ extension GitHub {
             self.description = description
         }
         
+        private enum CodingKeys: String, CodingKey {
+            case name, description
+        }
+        
     }
     
 }

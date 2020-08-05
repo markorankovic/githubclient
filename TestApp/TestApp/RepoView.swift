@@ -4,16 +4,12 @@ import Network
 
 struct RepoView: View {
         
-    let repo: GitHub.Repo
-    
-    init(repo: GitHub.Repo) {
-        self.repo = repo
-    }
-    
+    var repo: GitHub.Repo
+        
     var body: some View {
         VStack(alignment: .leading) {
-            Text(repo.name)
-            Text(repo.description ?? "")
+            Text("Name: \(repo.name)")
+            Text("Description: \(repo.description ?? "")")
         }
     }
     
