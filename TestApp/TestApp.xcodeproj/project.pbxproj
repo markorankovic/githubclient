@@ -10,7 +10,8 @@
 		AD026A2724D85B3E00003AD4 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AD026A2624D85B3E00003AD4 /* Network */; };
 		AD13A31224D9B591008D6AAB /* RepoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13A31124D9B591008D6AAB /* RepoStore.swift */; };
 		AD13A31424D9D04E008D6AAB /* RepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13A31324D9D04E008D6AAB /* RepoView.swift */; };
-		AD6FF84D24DBF81100D2C66E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FF84C24DBF81100D2C66E /* LoginView.swift */; };
+		AD19A4E124E064250061C908 /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19A4E024E064250061C908 /* ContentView3.swift */; };
+		AD19A4E324E066B20061C908 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD19A4E224E066B20061C908 /* ViewRouter.swift */; };
 		AD6FF84F24DBFB0D00D2C66E /* RepoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6FF84E24DBFB0D00D2C66E /* RepoList.swift */; };
 		AD96053B24D83291009A4183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053A24D83291009A4183 /* AppDelegate.swift */; };
 		AD96053D24D83291009A4183 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD96053C24D83291009A4183 /* SceneDelegate.swift */; };
@@ -23,7 +24,8 @@
 /* Begin PBXFileReference section */
 		AD13A31124D9B591008D6AAB /* RepoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoStore.swift; sourceTree = "<group>"; };
 		AD13A31324D9D04E008D6AAB /* RepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoView.swift; sourceTree = "<group>"; };
-		AD6FF84C24DBF81100D2C66E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AD19A4E024E064250061C908 /* ContentView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
+		AD19A4E224E066B20061C908 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		AD6FF84E24DBFB0D00D2C66E /* RepoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoList.swift; sourceTree = "<group>"; };
 		AD96053724D83291009A4183 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD96053A24D83291009A4183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		AD96053924D83291009A4183 /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
+				AD19A4E024E064250061C908 /* ContentView3.swift */,
 				AD96053A24D83291009A4183 /* AppDelegate.swift */,
 				AD96053C24D83291009A4183 /* SceneDelegate.swift */,
 				AD96053E24D83291009A4183 /* ContentView.swift */,
@@ -83,8 +86,8 @@
 				AD96054224D83295009A4183 /* Preview Content */,
 				AD13A31124D9B591008D6AAB /* RepoStore.swift */,
 				AD13A31324D9D04E008D6AAB /* RepoView.swift */,
-				AD6FF84C24DBF81100D2C66E /* LoginView.swift */,
 				AD6FF84E24DBFB0D00D2C66E /* RepoList.swift */,
+				AD19A4E224E066B20061C908 /* ViewRouter.swift */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
@@ -173,12 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD19A4E324E066B20061C908 /* ViewRouter.swift in Sources */,
 				AD6FF84F24DBFB0D00D2C66E /* RepoList.swift in Sources */,
-				AD6FF84D24DBF81100D2C66E /* LoginView.swift in Sources */,
 				AD96053B24D83291009A4183 /* AppDelegate.swift in Sources */,
 				AD13A31224D9B591008D6AAB /* RepoStore.swift in Sources */,
 				AD96053D24D83291009A4183 /* SceneDelegate.swift in Sources */,
 				AD96053F24D83291009A4183 /* ContentView.swift in Sources */,
+				AD19A4E124E064250061C908 /* ContentView3.swift in Sources */,
 				AD13A31424D9D04E008D6AAB /* RepoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

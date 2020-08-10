@@ -4,6 +4,8 @@ import SwiftUI
 
 class RepoStore: ObservableObject {
     
+    static var access_token: String?
+    
     @Published var repos: [GitHub.Repo] = []
     
     private let f = RepoFetcher()
@@ -11,7 +13,9 @@ class RepoStore: ObservableObject {
     init() { get() }
     
     func get() {
-        
+        if let access_token = RepoStore.access_token {
+            f.access_token = access_token
+        }
         f.fetch { [weak self] status in
             print(status)
             guard String(describing: status).contains("ok") else {

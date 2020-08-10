@@ -13,17 +13,32 @@ import Network
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    // Create the SwiftUI view that provides the window contents.
+    var contentView = ContentView(viewRouter: ViewRouter())
 
-    @ObservedObject var repoStore = RepoStore()
-
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        guard let code = components?.queryItems?.filter({ $0.name == "code" }).first?.value else {
+            return
+        }
+        Authenticator.authenticate(code) { [weak self] access_token in
+            guard let self = self else {
+                return
+            }
+            RepoStore.access_token = access_token
+            self.contentView.viewRouter.currentPage = 3
+        }
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-                        
+                                
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -31,6 +46,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        
+        Login.redirectToBrowser()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

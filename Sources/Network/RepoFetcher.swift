@@ -16,6 +16,8 @@ public class RepoFetcher {
     
     public var fakeOk: Data?
     
+    public var access_token: String = ""
+    
     public init() { }
     
     public func fetch(callBack: @escaping (_ status: Status) -> ()) {
@@ -29,9 +31,9 @@ public class RepoFetcher {
             status = .error("Invalid URL")
             return
         }
-        
+
         var req = URLRequest(url: url)
-        req.addValue("token \(GitHub.token)", forHTTPHeaderField: "Authorization")
+        req.addValue("token \(access_token)", forHTTPHeaderField: "Authorization")
         
         let task = RepoFetcher.session.dataTask(with: req) { ºdata, ºresponse, ºerror in
             self.handler(callBack, ºdata, ºresponse, ºerror)

@@ -7,15 +7,17 @@
 //
 
 import SwiftUI
+import Network
 
 struct ContentView: View {
+    @ObservedObject var viewRouter: ViewRouter
+    
     var body: some View {
-        LoginView()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        VStack {
+            switch viewRouter.currentPage {
+            case 3: ContentView3()
+            default: Text("Loading")
+            }
+        }
     }
 }
